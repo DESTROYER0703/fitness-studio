@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-charcoal-900 text-gray-light;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-charcoal-800/80 backdrop-blur-md border border-white/10;
+  }
+  
+  .glass-card-hover {
+    @apply hover:border-lime/50 transition-colors duration-300;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+  }
+  
+  .box-glow {
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.15);
+  }
+}
