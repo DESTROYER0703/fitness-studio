@@ -19,42 +19,57 @@ const Navbar = () => {
     { name: 'Programs', href: '#programs' },
     { name: 'Trainers', href: '#trainers' },
     { name: 'Membership', href: '#membership' },
-    { name: 'Transformation', href: '#transformation' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-charcoal-900/90 backdrop-blur-md py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-charcoal-950/80 backdrop-blur-xl py-3 border-b border-white/5 shadow-2xl' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex-shrink-0">
-            <a href="#home" className="text-2xl font-anton tracking-wider text-white">
-              FITNESS STUDIO <span className="text-lime">GYM</span>
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex-shrink-0 relative group cursor-pointer"
+          >
+            <a href="#home" className="text-2xl md:text-3xl font-display font-bold tracking-tighter text-white flex items-center gap-1">
+              FITNESS<span className="font-light text-white/70">STUDIO</span>
+              <div className="w-2 h-2 rounded-full bg-gold ml-1 animate-pulse"></div>
             </a>
-          </div>
+          </motion.div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a 
+          <div className="hidden md:flex items-center space-x-1 lg:space-x-4">
+            {navLinks.map((link, i) => (
+              <motion.a 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
                 key={link.name} 
                 href={link.href} 
-                className="text-gray-light hover:text-lime transition-colors font-mono text-sm tracking-widest uppercase"
+                className="relative px-4 py-2 text-gray-light hover:text-gold transition-colors font-sans text-sm tracking-wide font-medium group"
               >
                 {link.name}
-              </a>
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
             ))}
-            <a href="#membership" className="bg-lime text-charcoal-900 px-6 py-2 rounded-sm font-anton uppercase tracking-wider hover:bg-white transition-colors duration-300">
-              Join Now
-            </a>
+            <motion.a 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              href="#membership" 
+              className="ml-4 button-gold text-xs px-6 py-3"
+            >
+              Join The Elite
+            </motion.a>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button 
               onClick={() => setIsOpen(!isOpen)} 
-              className="text-white hover:text-lime focus:outline-none"
+              className="text-white hover:text-gold focus:outline-none transition-colors"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -67,28 +82,35 @@ const Navbar = () => {
         {isOpen && (
           <motion.div 
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: '100vh' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-charcoal-900 border-b border-white/10"
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden absolute top-full left-0 w-full bg-charcoal-950/95 backdrop-blur-2xl border-t border-white/5 overflow-hidden"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navLinks.map((link) => (
-                <a
+            <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] space-y-8 px-6">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2 text-base font-mono uppercase tracking-widest text-gray-light hover:text-lime hover:bg-charcoal-800 rounded-md"
+                  className="text-3xl font-display uppercase tracking-widest text-gray-light hover:text-gold transition-colors"
                 >
                   {link.name}
-                </a>
+                </motion.a>
               ))}
-              <a 
+              <motion.a 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
                 href="#membership" 
                 onClick={() => setIsOpen(false)}
-                className="block mt-4 text-center bg-lime text-charcoal-900 px-6 py-3 rounded-sm font-anton uppercase tracking-wider hover:bg-white transition-colors"
+                className="mt-8 button-gold w-full max-w-xs"
               >
-                Join Now
-              </a>
+                Join The Elite
+              </motion.a>
             </div>
           </motion.div>
         )}

@@ -4,24 +4,43 @@
 
 @layer base {
   body {
-    @apply bg-charcoal-900 text-gray-light;
+    @apply bg-charcoal-950 text-gray-light font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
   }
 }
 
 @layer utilities {
   .glass-card {
-    @apply bg-charcoal-800/80 backdrop-blur-md border border-white/10;
+    @apply bg-charcoal-900/60 backdrop-blur-xl border border-white/5 shadow-2xl;
   }
   
   .glass-card-hover {
-    @apply hover:border-lime/50 transition-colors duration-300;
+    @apply hover:border-gold/30 hover:bg-charcoal-800/80 transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)];
   }
   
   .text-glow {
-    text-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  }
+  
+  .text-glow-gold {
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5), 0 0 30px rgba(212, 175, 55, 0.3);
   }
   
   .box-glow {
-    box-shadow: 0 0 20px rgba(204, 255, 0, 0.15);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-400 via-gold to-gold-600;
+  }
+
+  .button-gold {
+    @apply relative overflow-hidden bg-gold text-charcoal-950 font-semibold px-8 py-4 rounded-none transition-all duration-300 hover:bg-gold-400 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] flex items-center justify-center gap-2 font-display uppercase tracking-wider text-sm;
+  }
+
+  .button-outline {
+    @apply relative overflow-hidden bg-transparent border border-white/20 text-white font-semibold px-8 py-4 rounded-none transition-all duration-300 hover:border-gold hover:text-gold flex items-center justify-center gap-2 font-display uppercase tracking-wider text-sm;
   }
 }

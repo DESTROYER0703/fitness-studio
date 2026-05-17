@@ -1,55 +1,58 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Award } from 'lucide-react';
 
 const About = () => {
   const features = [
-    'Modern, state-of-the-art equipment',
-    'Certified & experienced trainers',
-    'Personalized coaching & nutrition plans',
-    'Premium, high-energy atmosphere',
-    'Clean & hygienic environment',
-    'Flexible membership options'
+    'Imported biomechanical equipment',
+    'Internationally certified masters',
+    'Bespoke physiological programming',
+    'Luxury climate-controlled environment',
+    'Impeccable hygiene standards',
+    'Exclusive member privileges'
   ];
 
   return (
-    <section id="about" className="py-24 bg-[#0d1007]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+    <section id="about" className="py-32 bg-[#050505] relative overflow-hidden">
+      {/* Decorative lines */}
+      <div className="absolute top-0 right-0 w-1/3 h-full border-r border-white/5 pointer-events-none"></div>
+      <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-20 items-center">
           
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="w-full lg:w-1/2 relative"
           >
-            <motion.div 
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.5 }}
-              className="relative h-[600px] w-full rounded-sm overflow-hidden border border-white/10 group shadow-2xl shadow-lime/5"
-            >
+            <div className="relative h-[700px] w-full rounded-2xl overflow-hidden group shadow-[0_30px_60px_rgba(0,0,0,0.6)]">
               <img 
-                src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                alt="Gym Interior" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                alt="Premium Gym Interior" 
+                className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-charcoal-900/20 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0"></div>
-              <div className="absolute inset-0 border-[4px] border-lime/0 group-hover:border-lime/20 transition-colors duration-500 pointer-events-none rounded-sm"></div>
-            </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/20 to-transparent opacity-80"></div>
+              <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none"></div>
+            </div>
             
-            {/* Floating Badge */}
+            {/* Floating Luxury Badge */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="absolute -bottom-8 -right-8 md:bottom-8 md:-right-8 bg-charcoal-800 p-6 rounded-sm border-l-4 border-lime shadow-2xl glass-card hidden sm:block"
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="absolute -bottom-10 right-0 md:-right-10 bg-charcoal-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gold/20 shadow-2xl hidden sm:flex items-center gap-6"
             >
-              <div className="flex items-center gap-4">
-                <div className="text-lime text-4xl font-anton">10+</div>
-                <div className="text-sm font-mono text-gray-light uppercase tracking-widest leading-tight">
-                  Years of<br/>Excellence
+              <div className="w-16 h-16 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold">
+                <Award size={32} strokeWidth={1.5} />
+              </div>
+              <div>
+                <div className="text-white text-3xl font-display font-bold tracking-tighter">PREMIUM</div>
+                <div className="text-gold text-xs font-sans uppercase tracking-[0.2em] font-semibold mt-1">
+                  Standard
                 </div>
               </div>
             </motion.div>
@@ -58,36 +61,38 @@ const About = () => {
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="w-full lg:w-1/2"
           >
-            <h4 className="text-lime font-mono text-sm tracking-widest uppercase mb-2">About Our Brand</h4>
-            <h2 className="text-4xl md:text-5xl font-anton text-white uppercase tracking-wide mb-6">
-              More Than Just A Gym, <br/>It's A <span className="text-lime text-glow">Lifestyle</span>
+            <div className="inline-flex items-center gap-2 mb-6">
+              <span className="w-8 h-px bg-gold"></span>
+              <span className="text-gold font-sans text-xs tracking-[0.3em] uppercase font-semibold">The Philosophy</span>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white uppercase tracking-tighter mb-8 leading-[1.1]">
+              Engineered For <br/>
+              <span className="text-gradient-gold">Excellence</span>
             </h2>
-            <p className="text-gray-light text-lg mb-8 leading-relaxed">
-              At Fitness Studio GYM, we believe that fitness is not a destination, but a continuous journey. We provide a premium environment that inspires greatness, pushes boundaries, and fosters a community of dedicated individuals striving for peak performance.
+            
+            <p className="text-gray-light/80 text-lg mb-10 font-light leading-relaxed">
+              Fitness Studio GYM is a sanctuary for the ambitious. We transcend the conventional gym experience by merging cutting-edge sports science with unparalleled luxury. This is where uncompromising standards meet profound physical transformation.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 mb-12">
               {features.map((feature, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-lime mt-1 flex-shrink-0" size={20} />
-                  <span className="text-gray-light">{feature}</span>
+                <div key={idx} className="flex items-start gap-4">
+                  <div className="w-6 h-6 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5 border border-gold/20">
+                    <CheckCircle2 className="text-gold" size={14} />
+                  </div>
+                  <span className="text-gray-light/90 font-light text-sm leading-relaxed">{feature}</span>
                 </div>
               ))}
             </div>
 
-            <motion.a 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#trainers" 
-              className="group relative inline-block bg-lime text-charcoal-900 px-8 py-4 font-anton uppercase tracking-wider overflow-hidden rounded-sm text-lg"
-            >
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">Meet Our Trainers</span>
-              <div className="absolute inset-0 bg-charcoal-900 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></div>
-            </motion.a>
+            <a href="#trainers" className="button-outline w-fit">
+              Explore Our Lineage
+            </a>
           </motion.div>
 
         </div>
