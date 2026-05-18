@@ -44,3 +44,33 @@
     @apply relative overflow-hidden bg-transparent border border-white/20 text-white font-semibold px-8 py-4 rounded-none transition-all duration-300 hover:border-gold hover:text-gold flex items-center justify-center gap-2 font-display uppercase tracking-wider text-sm;
   }
 }
+
+/* ─── Cinematic Intro Utilities ─────────────────────────────────────────────── */
+@keyframes cinematic-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes cinematic-pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.04); }
+}
+
+@keyframes cinematic-drift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  33%  { transform: translate(3px, -6px) rotate(0.5deg); }
+  66%  { transform: translate(-3px, 3px) rotate(-0.3deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Prevent FOUC on intro load */
+#root {
+  background-color: #050505;
+}
+
+/* GPU acceleration hints for intro elements */
+.cinematic-gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
